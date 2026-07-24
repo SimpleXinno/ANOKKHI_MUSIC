@@ -16,7 +16,7 @@ from ANIYAXMUSIC.utils.formatters import time_to_seconds
 FALLBACK_API_URL = "https://shrutibots.site"
 YOUR_API_URL = None
 # API Key Support
-API_KEY = os.environ.get("SHRUTI_API_KEY", "ShrutiBotsb3b3J2YjziC6bxgS6TXp")
+API_KEY = os.environ.get("SHRUTI_API_KEY", "ShrutiBotsEK8ocyRGxpl8ekYePyzv")
 API_URL = os.environ.get("SHRUTI_API_URL", FALLBACK_API_URL)
 cookies_file = "ANIYAXMUSIC/assets/cookies.txt"
 # 🔄 API URL Loader (Dynamic)
