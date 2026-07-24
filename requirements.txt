@@ -13,6 +13,7 @@ bs4
 cloudscraper
 deepai
 daxxhub
+kurigram>=2.2.23
 dnspython
 emojis
 ffmpeg-python
