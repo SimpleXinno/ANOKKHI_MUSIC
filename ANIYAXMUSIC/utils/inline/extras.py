@@ -1,43 +1,50 @@
 from pyrogram.types import InlineKeyboardMarkup
 from config import SUPPORT_CHAT
-from ANIYAXMUSIC.utils.inline.start import api_btn  # Assuming api_btn is here
+from ANIYAXMUSIC.utils.inline.buttons import inline
 
 
 def botplaylist_markup(_):
-    buttons = [
+    return inline.ikm(
         [
-            api_btn(text=_["S_B_9"], url=SUPPORT_CHAT, style="primary"),
-            api_btn(text=_["CLOSE_BUTTON"], callback_data="close", style="danger"),
-        ],
-    ]
-    return buttons
+            [
+                inline._button(
+                    text=_["S_B_9"],
+                    url=SUPPORT_CHAT,
+                    category="primary",
+                ),
+                inline._button(
+                    text=_["CLOSE_BUTTON"],
+                    callback_data="close",
+                    category="danger",
+                ),
+            ],
+        ]
+    )
 
 
 def close_markup(_):
-    upl = InlineKeyboardMarkup(
+    return inline.ikm(
         [
             [
-                api_btn(
+                inline._button(
                     text=_["CLOSE_BUTTON"],
                     callback_data="close",
-                    style="danger"
+                    category="danger",
                 ),
             ]
         ]
     )
-    return upl
 
 
 def supp_markup(_):
-    upl = InlineKeyboardMarkup(
+    return inline.ikm(
         [
             [
-                api_btn(
+                inline._button(
                     text=_["S_B_9"],
                     url=SUPPORT_CHAT,
-                    style="primary"
+                    category="primary",
                 ),
             ]
         ]
     )
-    return upl
