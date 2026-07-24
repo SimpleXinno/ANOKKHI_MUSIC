@@ -7,7 +7,7 @@ import httpx
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 start_txt = """
-❥ ωєℓ¢σмє тσ  ˹ 𝄞 𖦹 Mᴇʟᴏᴅʏ ✘ ᴍᴜsɪᴄ 🥀 
+❥ ωєℓ¢σмє тσ  ˵𓄼˳𝜜𝒏𝒐𝒌𝒉𝒊 𝒙 𝜧𝒖𝒔𝒊𝒄 ༉‧₊˚.
 
 ❥ ʀᴇᴘᴏ ᴄʜᴀᴀʜɪʏe ᴛᴏ ʙᴏᴛ ᴋᴏ 
 
@@ -15,7 +15,7 @@ start_txt = """
 
 ❥ ᴀᴅᴍɪɴ ʙᴀɴᴏ ᴀᴜʀ sᴄʀᴇᴇɴsʜᴏᴛ 
      
-❥ ᴏᴡɴᴇʀ @Kaito_3_2 ᴋᴏ ᴅᴏ ғɪʀ ʀᴇᴘᴏ ᴍɪʟ sᴀᴋᴛɪ ʜᴀɪ 
+❥ ᴏᴡɴᴇʀ @II_SB_SIMPLE_II ᴋᴏ ᴅᴏ ғɪʀ ʀᴇᴘᴏ ᴍɪʟ sᴀᴋᴛɪ ʜᴀɪ 
 
 """
 
@@ -26,17 +26,17 @@ start_txt = """
 async def start(_, msg):
     buttons = [
         [ 
-          InlineKeyboardButton("♡ α∂∂ иσω ♡", url=f"https://t.me/Yukiimusicbot?startgroup=true")
+          InlineKeyboardButton("♡ α∂∂ иσω ♡", url=f"https://t.me/Anokhi_MusicBot?startgroup=true")
         ],
         [
           InlineKeyboardButton("ѕυρρσɾƚ", url="https://t.me/heartstealer_x"),
-          InlineKeyboardButton(" 𝐒 𝛖 𝐝 ֟፝ᥱ 𝛆 𝛒 </𝟑𒌋", url="https://t.me/Kaito_3_2"),
+          InlineKeyboardButton(" ❍ƴꫀ─̽𝐌 ɪ ͢ͷ 𝛆᪵🤍", url="https://t.me/II_SB_SIMPLE"),
           ],
                [
-                InlineKeyboardButton("ᴏᴛʜᴇʀ ʙᴏᴛs", url=f"https://t.me/heartstealer_x"),
+                InlineKeyboardButton("ᴏᴛʜᴇʀ ʙᴏᴛs", url=f"https://t.me/ABOUT_NIGHT_SQUAD"),
 ],
 [
-InlineKeyboardButton("ᴄʜᴇᴄᴋ", url=f"https://t.me/Yukiimusicbot"),
+InlineKeyboardButton("ᴄʜᴇᴄᴋ", url=f"https://t.me/misskittymusicbot"),
 
         ]]
     
