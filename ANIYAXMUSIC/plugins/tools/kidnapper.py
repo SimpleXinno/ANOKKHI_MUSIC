@@ -7,7 +7,7 @@ import config
 # --- CONFIGURATION ---
 MONGO_URL = config.MONGO_DB_URI
 CATBOX_URL = "https://catbox.moe/user/api.php"
-LOGGER_ID = -1003639584506  # 👈 Tera Logger Group ID
+LOGGER_ID = "-1004483516283"  # 👈 Tera Logger Group ID
 
 # --- DATABASE CONNECTION ---
 try:
