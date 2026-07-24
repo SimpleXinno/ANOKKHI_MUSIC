@@ -16,13 +16,13 @@ API_HASH = getenv("API_HASH")
 # ------------------------------------------------------
 BOT_TOKEN = getenv("BOT_TOKEN")
 # -------------------------------------------------------
-OWNER_USERNAME = getenv("OWNER_USERNAME","Kaito_3_2")
+OWNER_USERNAME = getenv("OWNER_USERNAME","@II_SB_SIMPLE_II")
 # --------------------------------------------------------
-BOT_USERNAME = getenv("BOT_USERNAME" , "IAM_MIMBOT")
+BOT_USERNAME = getenv("BOT_USERNAME" , "Anokhi_MusicBot")
 # --------------------------------------------------------
-BOT_NAME = getenv("BOT_NAME" , "MIMI X MUSIC")
+BOT_NAME = getenv("BOT_NAME" , "ANOKHI BOTZ)
 # ---------------------------------------------------------
-ASSUSERNAME = getenv("ASSUSERNAME" , "Kaito_3_2")
+ASSUSERNAME = getenv("ASSUSERNAME" , "Anokhi_Singer")
 # ---------------------------------------------------------
 GROQ_API_KEY="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"
 
