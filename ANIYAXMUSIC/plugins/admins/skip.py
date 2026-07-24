@@ -65,11 +65,6 @@ async def skip(cli, message: Message, _, chat_id):
         popped = None
         try:
             popped = check.pop(0)
-            if popped and "mystic" in popped:   # 🔥 Added - Old message delete
-                try:
-                    await popped["mystic"].delete()
-                except:
-                    pass
             if popped:
                 await auto_clean(popped)
             if not check:
@@ -94,16 +89,6 @@ async def skip(cli, message: Message, _, chat_id):
                 return await ANIYA.stop_stream(chat_id)
             except:
                 return
-
-    # 🔥 Next song details update ke liye centralized logic call
-    await ANIYA.change_stream(ANIYA, chat_id)
-
-    # Command message delete (optional but clean)
-    try:
-        await message.delete()
-    except:
-        pass
-
     queued = check[0]["file"]
     title = (check[0]["title"]).title()
     user = check[0]["by"]
