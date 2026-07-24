@@ -20,7 +20,7 @@ OWNER_USERNAME = getenv("OWNER_USERNAME","@II_SB_SIMPLE_II")
 # --------------------------------------------------------
 BOT_USERNAME = getenv("BOT_USERNAME" , "Anokhi_MusicBot")
 # --------------------------------------------------------
-BOT_NAME = getenv("BOT_NAME" , "ANOKHI BOTZ)
+BOT_NAME = getenv("BOT_NAME" , "ANOKHI BOTZ")
 # ---------------------------------------------------------
 ASSUSERNAME = getenv("ASSUSERNAME" , "Anokhi_Singer")
 # ---------------------------------------------------------
