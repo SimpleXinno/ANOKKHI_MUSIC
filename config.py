@@ -28,7 +28,7 @@ GROQ_API_KEY="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"
 
 #---------------------------------------------------------------
 #---------------------------------------------------------------
-MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://theriyamusic94:f67KlgTyzr3TTutn@cluster0.lym5x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://samimsuperboy:samimsuperboy@cluster0.q7vxjmi.mongodb.net/?appName=Cluster0")
 #---------------------------------------------------------------
 #---------------------------------------------------------------
 
@@ -55,7 +55,7 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 # ----------------------------------------------------------------
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/SUDEEPBOTS/MYRDLMUSIC",
+    "https://github.com/SimpleXinno/ANOKKHI_MUSIC",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 GIT_TOKEN = getenv(
@@ -116,7 +116,7 @@ TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", "5242880000"))
 # ------------------------------------
 # ------------------------------------
 # ------------------------------------
-STRING1 = getenv("STRING_SESSION", "BQGV228AnXNo28JZUA8Gj_U2NXX7Gf-D7v0wBMBtAVmfm4tchpWtUbg5XaAJqLKMPSVOEseufFuzFrbH3IIit5_IJL997Z_1UUgnAu50mSjHcuDhBLEc1r3Q8T8J506_io6JyLF1ElpuU0jer8QswWQAn2Lp4IGHM0VCaDsSserjVoh1HKwfWQnr3oWnr919gnmRwyDU8TlazWYrcT7MhtMBOLVIn7YOSZsLfMdFu-v0lrujxGWkp48zdTAonetevCBVWbkSetWnRKROhZWUh6ItGtFk5d75uWmtO1LAP_kKlz9wxc-9nsBYrUiDmv4OtSheB8ma_Ag2PKFa9uYZagsdiOhyjAAAAAGwUnlsAA")
+STRING1 = getenv("STRING_SESSION", "BQIET4gAmbbQNZtGb8bGxSF4AcRCPPG-5iNuuwlFISKTyenwgXf772rPibyzmYMoEbAilc9rDL9fHybb3geAeOgZ3CwOehCslCT3vTTjcw5NTaaEheluShJqcw8upLA5S3e4TcCFf6WF74lppjE49BwOAsfKCAv-Ukrxw4HBp8JJG6_hgP04cDS5_mDR1y-iX3UNeQaAiK76jlI8XxPCi5S7YhpCdOzvkEs7f9BkOTN0osBAPlHloZiWXBn_J3RuLgsJzbTu-abpmrcnnWKRTOTPbVtEuSU15hZfHuMwxaIGoRUqzBQjVnYHbWxgxouyzOjonBIBK0ItNtTGAKd6Nt3TYHhLvwAAAAINQMAwAA")
 STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
