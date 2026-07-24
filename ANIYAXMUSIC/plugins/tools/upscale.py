@@ -21,7 +21,7 @@ async def image_loader(image: str, link: str):
                 return image
             return image
 
-@app.on_message(filters.command("upscale", prefixes="/"))
+@app.on_message(filters.command("sbupscale", prefixes="/"))
 async def upscale_image(client, message):
     chat_id = message.chat.id
     replied = message.reply_to_message
