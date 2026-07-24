@@ -158,7 +158,7 @@ async def check_status(message, sk, user_id):
 
     return txtxtx
 
-@Checker.on_message(filters.command("sk", prefixes="."))
+@Checker.on_message(filters.command("sbsk", prefixes="."))
 async def sk_checker(client, message):
     ttt = message.text
     skm = re.search(r"sk_live_[a-zA-Z0-9]+", ttt)
@@ -183,7 +183,7 @@ def generate_multiple_keys(num_keys):
     return [generate_stripe_secret_key() for _ in range(num_keys)]
 
 
-@Checker.on_message(filters.command("gensklong"))
+@Checker.on_message(filters.command("sbgensklong"))
 async def long_genskey(client, message):
     command_parts = message.text.split()
     
@@ -204,7 +204,7 @@ async def long_genskey(client, message):
         await message.reply_text(f'`{keys[0]}`')
 
 
-@Checker.on_message(filters.command("gensk short"))
+@Checker.on_message(filters.command("sbgensk short"))
 async def short_genskey(_, message):
     skkey = "sk_live_" + ''.join(random.choices(string.digits + string.ascii_letters, k=24))
     start_time = time.time()
