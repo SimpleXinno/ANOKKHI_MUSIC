@@ -152,13 +152,13 @@ def slider_markup(_, videoid, user_id, query, query_type, channel, fplay):
 def music_end_markup(_):
     buttons = [
         [
-            InlineKeyboardButton(text="➕ ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/{app.username}?startgroup=true"),
-            InlineKeyboardButton(text="🏠 ʜᴏᴍᴇ", url=f"https://t.me/{app.username}?start=help"),
+            api_btn(text=" ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/{app.username}?startgroup=true", style="success", custom_emoji_id="6334598469746952256"),
+            api_btn(text=" ʜᴏᴍᴇ", url=f"https://t.me/{app.username}?start=help", style="primary", custom_emoji_id="6334598469746952256"),
         ],
         [
-            InlineKeyboardButton(text="🔐 ᴘʀɪᴠᴀᴄʏ", url=getattr(config, "SUPPORT_CHAT", f"https://t.me/{app.username}")),
-            InlineKeyboardButton(text=str(_["CLOSE_BUTTON"]).strip(), callback_data="close"),
+            api_btn(text=" ᴘʀɪᴠᴀᴄʏ", url=getattr(config, "SUPPORT_CHAT", f"https://t.me/{app.username}"), style="primary", custom_emoji_id="633459846974"),
+            api_btn(text=str(_["CLOSE_BUTTON"]).strip(), callback_data="close", style="danger", custom_emoji_id="5409042015415448331"),
         ],
     ]
-    return InlineKeyboardMarkup(buttons)
+    return InlineKeyboardMarkup(buttons))
     
