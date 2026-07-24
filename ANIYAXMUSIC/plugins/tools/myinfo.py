@@ -118,7 +118,7 @@ async def get_page_content(client, page_num, user_id):
         
         markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("⬅️ ʙᴀᴄᴋ ᴛᴏ ɪɴꜰᴏ", callback_data="myinfo_p2")],
-            [InlineKeyboardButton("🌟 ᴠɪꜱɪᴛ ɢɪᴛʜᴜʙ", url="https://github.com/SUDEEPBOTS")],
+            [InlineKeyboardButton("🌟 ᴠɪꜱɪᴛ ɢɪᴛʜᴜʙ", url="https://t.me/Anokhi_MusicBot")],
             [InlineKeyboardButton("ᴄʟᴏꜱᴇ", callback_data="close")]
         ])
         
@@ -141,7 +141,7 @@ async def send_my_info(client, message: Message):
         pass
         
     # 🔥 Fetch Real Telegram Profile Pic
-    REAL_PROFILE_PIC = "https://telegra.ph/file/8b383eb685ed1d8f1e626.jpg" # Default fallback
+    REAL_PROFILE_PIC = "https://graph.org/file/1461362810856c70a854e-1d36f9fb185f2af428.jpg" # Default fallback
     try:
         async for photo in client.get_chat_photos(message.from_user.id, limit=1):
             REAL_PROFILE_PIC = photo.file_id
