@@ -119,7 +119,7 @@ async def start_pm(client, message: Message, _):
     await asyncio.sleep(0.1)
     await loading_1.edit_text("<emoji id='6001132493011425597'>💖</emoji> <b>ʜєʏ ʙᴧʙʏ!</b>")
     await asyncio.sleep(0.1)
-    await loading_1.edit_text("<emoji id='5413840936994097463'>🌺</emoji> <b>ᴍɪᴍɪ ꭙ ϻᴜsɪᴄ ♪\nsᴛᴧʀᴛed!</b>")
+    await loading_1.edit_text("<emoji id='5413840936994097463'>🌺</emoji> <b>ㅤ˵𓄼˳𝜜𝒏𝒐𝒌𝒉𝒊 𝒙 𝜧𝒖𝒔𝒊𝒄 ༉‧₊˚. ♪\nsᴛᴧʀᴛed!</b>")
     await asyncio.sleep(0.1)
     await loading_1.delete()
     
