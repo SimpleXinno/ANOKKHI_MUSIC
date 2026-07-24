@@ -3,7 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, Message
 
 import config
 from ANIYAXMUSIC import YouTube, app
-from ANIYAXMUSIC.core.call import Sagar
+from ANIYAXMUSIC.core.call import ANIYA
 from ANIYAXMUSIC.misc import db
 from ANIYAXMUSIC.utils.database import get_loop
 from ANIYAXMUSIC.utils.decorators import AdminRightsCheck
