@@ -160,5 +160,5 @@ def music_end_markup(_):
             api_btn(text=str(_["CLOSE_BUTTON"]).strip(), callback_data="close", style="danger", custom_emoji_id="5409042015415448331"),
         ],
     ]
-    return InlineKeyboardMarkup(buttons))
+    return buttons
     
