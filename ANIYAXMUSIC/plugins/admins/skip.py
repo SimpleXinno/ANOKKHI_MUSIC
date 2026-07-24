@@ -3,12 +3,12 @@ from pyrogram.types import InlineKeyboardMarkup, Message
 
 import config
 from ANIYAXMUSIC import YouTube, app
-from ANIYAXMUSIC.core.call import ANIYA
+from ANIYAXMUSIC.core.call import Sagar
 from ANIYAXMUSIC.misc import db
 from ANIYAXMUSIC.utils.database import get_loop
 from ANIYAXMUSIC.utils.decorators import AdminRightsCheck
 from ANIYAXMUSIC.utils.inline import close_markup, stream_markup
-from ANIYAXMUSIC.utils.stream.autoclear import auto_clean
+from ANIYAXMUSIC.utils.stream.autoclear import auto_clean, auto_turn
 from ANIYAXMUSIC.utils.thumbnails import get_thumb
 from config import BANNED_USERS
 
@@ -40,18 +40,21 @@ async def skip(cli, message: Message, _, chat_id):
                             if popped:
                                 await auto_clean(popped)
                             if not check:
-                                try:
-                                    await message.reply_text(
-                                        text=_["admin_6"].format(
-                                            message.from_user.mention,
-                                            message.chat.title,
-                                        ),
-                                        reply_markup=close_markup(_),
-                                    )
-                                    await ANIYA.stop_stream(chat_id)
-                                except:
-                                    return
-                                break
+                                await auto_turn(chat_id, popped)
+                                check = db.get(chat_id)
+                                if not check:
+                                    try:
+                                        await message.reply_text(
+                                            text=_["admin_6"].format(
+                                                message.from_user.mention,
+                                                message.chat.title,
+                                            ),
+                                            reply_markup=close_markup(_),
+                                        )
+                                        await Sagar.stop_stream(chat_id)
+                                    except:
+                                        return
+                                    break
                     else:
                         return await message.reply_text(_["admin_11"].format(count))
                 else:
@@ -68,16 +71,19 @@ async def skip(cli, message: Message, _, chat_id):
             if popped:
                 await auto_clean(popped)
             if not check:
-                await message.reply_text(
-                    text=_["admin_6"].format(
-                        message.from_user.mention, message.chat.title
-                    ),
-                    reply_markup=close_markup(_),
-                )
-                try:
-                    return await ANIYA.stop_stream(chat_id)
-                except:
-                    return
+                await auto_turn(chat_id, popped)
+                check = db.get(chat_id)
+                if not check:
+                    await message.reply_text(
+                        text=_["admin_6"].format(
+                            message.from_user.mention, message.chat.title
+                        ),
+                        reply_markup=close_markup(_),
+                    )
+                    try:
+                        return await Sagar.stop_stream(chat_id)
+                    except:
+                        return
         except:
             try:
                 await message.reply_text(
@@ -86,7 +92,7 @@ async def skip(cli, message: Message, _, chat_id):
                     ),
                     reply_markup=close_markup(_),
                 )
-                return await ANIYA.stop_stream(chat_id)
+                return await Sagar.stop_stream(chat_id)
             except:
                 return
     queued = check[0]["file"]
@@ -111,13 +117,14 @@ async def skip(cli, message: Message, _, chat_id):
         except:
             image = None
         try:
-            await ANIYA.skip_stream(chat_id, link, video=status, image=image)
+            await Sagar.skip_stream(chat_id, link, video=status, image=image)
         except:
             return await message.reply_text(_["call_6"])
         button = stream_markup(_, chat_id)
-        img = await get_thumb(videoid)
+        img = await get_thumb(videoid, chat_id=chat_id)
         run = await message.reply_photo(
             photo=img,
+            has_spoiler=True,
             caption=_["stream_1"].format(
                 f"https://t.me/{app.username}?start=info_{videoid}",
                 title[:23],
@@ -144,13 +151,14 @@ async def skip(cli, message: Message, _, chat_id):
         except:
             image = None
         try:
-            await ANIYA.skip_stream(chat_id, file_path, video=status, image=image)
+            await Sagar.skip_stream(chat_id, file_path, video=status, image=image)
         except:
             return await mystic.edit_text(_["call_6"])
         button = stream_markup(_, chat_id)
-        img = await get_thumb(videoid)
+        img = await get_thumb(videoid, chat_id=chat_id)
         run = await message.reply_photo(
             photo=img,
+            has_spoiler=True,
             caption=_["stream_1"].format(
                 f"https://t.me/{app.username}?start=info_{videoid}",
                 title[:23],
@@ -164,7 +172,7 @@ async def skip(cli, message: Message, _, chat_id):
         await mystic.delete()
     elif "index_" in queued:
         try:
-            await ANIYA.skip_stream(chat_id, videoid, video=status)
+            await Sagar.skip_stream(chat_id, videoid, video=status)
         except:
             return await message.reply_text(_["call_6"])
         button = stream_markup(_, chat_id)
@@ -172,6 +180,7 @@ async def skip(cli, message: Message, _, chat_id):
             photo=config.STREAM_IMG_URL,
             caption=_["stream_2"].format(user),
             reply_markup=InlineKeyboardMarkup(button),
+            has_spoiler=True,
         )
         db[chat_id][0]["mystic"] = run
         db[chat_id][0]["markup"] = "tg"
@@ -186,7 +195,7 @@ async def skip(cli, message: Message, _, chat_id):
             except:
                 image = None
         try:
-            await ANIYA.skip_stream(chat_id, queued, video=status, image=image)
+            await Sagar.skip_stream(chat_id, queued, video=status, image=image)
         except:
             return await message.reply_text(_["call_6"])
         if videoid == "telegram":
@@ -217,9 +226,10 @@ async def skip(cli, message: Message, _, chat_id):
             db[chat_id][0]["markup"] = "tg"
         else:
             button = stream_markup(_, chat_id)
-            img = await get_thumb(videoid)
+            img = await get_thumb(videoid, chat_id=chat_id)
             run = await message.reply_photo(
                 photo=img,
+                has_spoiler=True,
                 caption=_["stream_1"].format(
                     f"https://t.me/{app.username}?start=info_{videoid}",
                     title[:23],
