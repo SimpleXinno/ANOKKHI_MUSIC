@@ -1,52 +1,76 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import os
+import math
 
 from ANIYAXMUSIC import app
 
-@app.on_message(filters.command("split") & filters.reply)
-async def split_file(client: Client, message: Message):
-    if message.reply_to_message and message.reply_to_message.document:
-        file_id = message.reply_to_message.document.file_id
-        file_name = message.reply_to_message.document.file_name
-        
-        try:
-            num_lines = int(message.text.split(" ")[1])
-        except (IndexError, ValueError):
-            num_lines = 2
+MAX_SIZE = 5 * 1024 * 1024 * 1024  # 5 GiB
 
-        file_path = await client.download_media(file_id)
 
-        if not os.path.exists(file_path):
-            await message.reply("Failed to download the file.")
-            return
+def parse_size(size_str):
+    size_str = size_str.strip().lower()
 
-        try:
-            with open(file_path, 'r') as file:
-                lines = file.readlines()
-        except Exception as e:
-            await message.reply(f"Failed to read the file: {str(e)}")
-            return
+    if size_str.endswith("mb"):
+        return int(float(size_str[:-2]) * 1024 * 1024)
 
-        for i in range(0, len(lines), num_lines):
-            split_lines = lines[i:i + num_lines]
-            split_file_path = f"split_{i//num_lines + 1}.txt"
-            try:
-                with open(split_file_path, 'w') as split_file:
-                    split_file.writelines(split_lines)
-            except Exception as e:
-                await message.reply(f"Failed to write the split file: {str(e)}")
-                continue
-            
-            try:
-                await client.send_document(chat_id=message.chat.id, document=split_file_path)
-            except Exception as e:
-                await message.reply(f"Failed to send the split file: {str(e)}")
-                continue
-            
-            os.remove(split_file_path)
-
-        os.remove(file_path)
+    elif size_str.endswith("gb"):
+        size = int(float(size_str[:-2]) * 1024 * 1024 * 1024)
+        if size > MAX_SIZE:
+            raise ValueError("Maximum allowed split size is 5GB.")
+        return size
 
     else:
-        await message.reply("Please reply to a document file to split it /split number of cc")
+        raise ValueError("Use MB or GB. Example: /split 10mb")
+
+
+@app.on_message(filters.command("split") & filters.reply)
+async def split_file(client: Client, message: Message):
+    replied = message.reply_to_message
+
+    if not replied or not replied.document:
+        return await message.reply_text(
+            "Reply to a TXT file.\nExample:\n`/split 10mb`"
+        )
+
+    try:
+        size = parse_size(message.command[1])
+    except:
+        return await message.reply_text(
+            "Usage:\n"
+            "`/split 10mb`\n"
+            "`/split 500mb`\n"
+            "`/split 2gb`\n"
+            "Maximum: 5GB"
+        )
+
+    file_path = await client.download_media(replied.document)
+
+    if not file_path:
+        return await message.reply("Download failed.")
+
+    total_size = os.path.getsize(file_path)
+    total_parts = math.ceil(total_size / size)
+
+    base_name = os.path.splitext(replied.document.file_name)[0]
+
+    try:
+        with open(file_path, "rb") as f:
+
+            for part in range(total_parts):
+                part_file = f"{base_name}_part{part+1}.txt"
+
+                with open(part_file, "wb") as out:
+                    out.write(f.read(size))
+
+                await client.send_document(
+                    message.chat.id,
+                    part_file,
+                    caption=f"Part {part+1}/{total_parts}"
+                )
+
+                os.remove(part_file)
+
+    finally:
+        if os.path.exists(file_path):
+            os.remove(file_path)
